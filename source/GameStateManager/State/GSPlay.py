@@ -2,7 +2,8 @@ from source.GameStateManager.GameStateBase import GameStateBase
 
 
 class GSPlay(GameStateBase):
-    def __int__(self):
+    def __init__(self):
+        super().__init__()
         self.background = None
         self.alpha_color = None
         self.btn_back = None
