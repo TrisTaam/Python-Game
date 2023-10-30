@@ -20,7 +20,7 @@ class Application:
         pg.display.set_caption(GameConfig.GAME_TITLE)
         self.window = pg.display.set_mode((GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT))
         WConnect.set_window(self.window)
-        GSM.change_state(StateTypes.INTRO)
+        GSM.change_state(StateTypes.UPGRADE)
 
     def run(self):
         self.init()
@@ -40,5 +40,6 @@ class Application:
         GSM.active_state.update(delta_time)
 
     def render(self):
+        self.window.fill((0, 0, 0))
         GSM.active_state.render()
-        pg.display.flip()
+        pg.display.update()

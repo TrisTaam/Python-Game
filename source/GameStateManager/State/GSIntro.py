@@ -1,5 +1,5 @@
 from source.GameManager.ResourceManager import ResourceManager
-from source import WConnect, GSM
+from source import WConnect, GSM, DATA
 from source.GameStateManager.GameStateBase import GameStateBase
 from source.GameStateManager.StateTypes import StateTypes
 
@@ -34,9 +34,10 @@ class GSIntro(GameStateBase):
         if self.current_time <= 1.0:
             self.alpha = min(255, round(self.current_time * 255))
         elif self.current_time <= 2.0:
+            DATA.preload()
             self.alpha = 255
-        elif self.current_time <= 3.0:
-            self.alpha = max(0, round((3.0 - self.current_time) * 255))
+        # elif self.current_time <= 3.0:
+        #     self.alpha = max(0, round((3.0 - self.current_time) * 255))
         else:
             GSM.change_state(StateTypes.MENU)
         self.logo.set_alpha(self.alpha)
